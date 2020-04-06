@@ -1,30 +1,34 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Android.Content;
 using GalaSoft.MvvmLight.Views;
 
-namespace JimBobBennett.MvvmLight.AppCompat
+namespace Atomicx.Mvvmlight.AppcompatStd
 {
+    /* It is
+    * https://github.com/jimbobbennett/JimBobBennett.MvvmLight.AppCompat
+    * with .net standard 2.0 dependencies
+    */
+
     public class AppCompatNavigationService : INavigationService
     {
         private readonly Dictionary<string, Type> _pagesByKey = new Dictionary<string, Type>();
         private readonly Dictionary<string, object> _parametersByKey = new Dictionary<string, object>();
-
         private const string RootPageKey = "-- ROOT --";
         private const string ParameterKeyName = "ParameterKey";
-        
+
         public string CurrentPageKey => AppCompatActivityBase.CurrentActivity.ActivityKey ?? RootPageKey;
-        
+
         public void GoBack()
         {
             AppCompatActivityBase.GoBack();
         }
-        
+
         public void NavigateTo(string pageKey)
         {
             NavigateTo(pageKey, null);
         }
-        
+
         public void NavigateTo(string pageKey, object parameter)
         {
             AppCompatDispatcherHelper.CheckBeginInvokeOnUI(() =>
@@ -38,6 +42,7 @@ namespace JimBobBennett.MvvmLight.AppCompat
                         throw new ArgumentException($"No such page: {pageKey}. Did you forget to call NavigationService.Configure?", nameof(pageKey));
 
                     var intent = new Intent(AppCompatActivityBase.CurrentActivity, _pagesByKey[pageKey]);
+
                     if (parameter != null)
                     {
                         lock (_parametersByKey)
@@ -47,7 +52,6 @@ namespace JimBobBennett.MvvmLight.AppCompat
                             intent.PutExtra(ParameterKeyName, guid);
                         }
                     }
-
                     AppCompatActivityBase.CurrentActivity.StartActivity(intent);
                     AppCompatActivityBase.NextPageKey = pageKey;
                 }
@@ -76,11 +80,13 @@ namespace JimBobBennett.MvvmLight.AppCompat
 
             lock (_parametersByKey)
                 return _parametersByKey.ContainsKey(stringExtra) ? _parametersByKey[stringExtra] : null;
+
         }
-        
+
         public T GetAndRemoveParameter<T>(Intent intent)
         {
             return (T)GetAndRemoveParameter(intent);
         }
+
     }
 }

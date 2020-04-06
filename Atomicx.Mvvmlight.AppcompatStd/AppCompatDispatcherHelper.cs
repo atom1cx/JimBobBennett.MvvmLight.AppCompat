@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Text;
 
-namespace JimBobBennett.MvvmLight.AppCompat
+namespace Atomicx.Mvvmlight.AppcompatStd
 {
-    /// <summary>
-    ///     Helper class for dispatcher operations on the UI thread in Android.
-    /// </summary>
-    /// <remarks>Original code by Laurent Bugnion</remarks>
+    /* It is
+    * https://github.com/jimbobbennett/JimBobBennett.MvvmLight.AppCompat
+    * with .net standard 2.0 dependencies
+    */
+
     public static class AppCompatDispatcherHelper
     {
         /// <summary>
@@ -21,7 +22,7 @@ namespace JimBobBennett.MvvmLight.AppCompat
         /// </param>
         // ReSharper disable InconsistentNaming
         public static void CheckBeginInvokeOnUI(Action action)
-            // ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
         {
             if (action == null)
             {
@@ -38,6 +39,7 @@ namespace JimBobBennett.MvvmLight.AppCompat
         /// </summary>
         public static void Initialize()
         {
+
         }
 
         /// <summary>
@@ -46,6 +48,7 @@ namespace JimBobBennett.MvvmLight.AppCompat
         /// </summary>
         public static void Reset()
         {
+
         }
 
         private static void CheckDispatcher()
@@ -55,7 +58,6 @@ namespace JimBobBennett.MvvmLight.AppCompat
                 var error = new StringBuilder($"The {nameof(AppCompatDispatcherHelper)} cannot be called.");
                 error.AppendLine();
                 error.Append($"Make sure that your main Activity derives from {nameof(AppCompatActivityBase)}.");
-
                 throw new InvalidOperationException(error.ToString());
             }
         }

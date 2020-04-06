@@ -1,20 +1,34 @@
-﻿using Android.Support.V7.App;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace JimBobBennett.MvvmLight.AppCompat
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Support.V7.App;
+
+
+namespace Atomicx.Mvvmlight.AppcompatStd
 {
+
+    /* It is
+     * https://github.com/jimbobbennett/JimBobBennett.MvvmLight.AppCompat
+     * with .net standard 2.0 dependencies
+     */
+
     public abstract class AppCompatActivityBase : AppCompatActivity
     {
         public static AppCompatActivityBase CurrentActivity { get; private set; }
-
         internal string ActivityKey { get; private set; }
-
         internal static string NextPageKey { get; set; }
-        
+
         public static void GoBack()
         {
             CurrentActivity?.OnBackPressed();
         }
-        
+
         protected override void OnResume()
         {
             CurrentActivity = this;
