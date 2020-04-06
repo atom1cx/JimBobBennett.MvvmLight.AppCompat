@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<package >
+
+  <metadata>
+
+    <id>Atomicx.MvvmLight.AppCompatStd</id>
+
+    <version>$version$</version>
+
+    <title>JimBobBennett MVVMLight AppCompat Helpers, based on MvvmLightLibsStd10</title>
+
+    <authors>Jim Bennett, Samuel Debruyn, Eugene Emelyanov</authors>
+
+    <owners>Eugene Emelyanov</owners>
+
+    <projectUrl>https://github.com/atom1cx/JimBobBennett.MvvmLight.AppCompat</projectUrl>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <description>Helpers for using MVVMLight with AppCompat Android projects, based on MvvmLightLibsStd10</description>
+
+    <releaseNotes>MvvmLightLibsStd10 migration</releaseNotes>
+
+    <tags>Android Xamarin MVVMLight AppCompat MvvmLightLibsStd10</tags>
+
+  </metadata>
+
+</package>
